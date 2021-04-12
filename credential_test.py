@@ -33,9 +33,16 @@ class TestCredential(unittest.TestCase):
         self.new_credential.save_credential()
         test_credential = Credential("Gmail", "https://gmail.com/signup/", "situwali", "google")
         test_credential.save_credential()
-
         self.new_credential.delete_credential()
         self.assertEqual(len(Credential.credential_list), 1)
+
+    def test_find_credential_by_title(self):
+        self.new_credential.save_credential()
+        test_credential = Credential("Gmail", "https://gmail.com/signup/", "situwali", "google")
+        test_credential.save_credential()
+        found_credential = Credential.find_by_title("Gmail")
+        self.assertEqual(found_credential.title, test_credential.title)
+
 
 
 if __name__ == '__main__':
