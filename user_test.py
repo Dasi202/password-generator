@@ -60,5 +60,12 @@ class TestUser(unittest.TestCase):
         test_user.save_user()
         user_exists = User.user_exist("test")
         self.assertTrue(user_exists)
+
+    def test_check_user(self):
+        self.new_user.save_user()
+        test_user = User("Test", "user", "test", "walIas15")
+        test_user.save_user()
+        test_user.check_user("test", "walIas15")
+
 if __name__ == '__main__':
     unittest.main()
