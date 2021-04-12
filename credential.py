@@ -1,3 +1,7 @@
+import pyperclip
+import random
+import string
+
 class Credential:
     """
     Class that generates new credentials for users
@@ -28,3 +32,9 @@ class Credential:
             if credential.title == title:
                 return True
         return False
+
+    @classmethod
+    def display_credentials(cls):
+        return cls.credential_list
+
+    
