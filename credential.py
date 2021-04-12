@@ -15,3 +15,9 @@ class Credential:
 
     def delete_credential(self):
         Credential.credential_list.remove(self)
+
+    @classmethod
+    def find_by_title(cls, title):
+        for credential in cls.credential_list:
+            if credential.title == title:
+                return credential
