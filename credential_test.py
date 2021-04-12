@@ -3,6 +3,10 @@ from credential import Credential
 
 
 class TestCredential(unittest.TestCase):
+    """
+    Test class that defines test cases for the credential class behaviours.
+    """
+
     def setUp(self):
         self.new_credential = Credential("Github", "https://github.com/Dasi202", "Dasi202", "pin")
 
@@ -11,3 +15,11 @@ class TestCredential(unittest.TestCase):
         self.assertEqual(self.new_credential.url, "https://github.com/Dasi202")
         self.assertEqual(self.new_credential.user_name, "Dasi202")
         self.assertEqual(self.new_credential.password, "pin")
+
+    def test_save_credential(self):
+        self.new_credential.save_credential()
+        self.assertEqual(len(Credential.credential_list), 1)
+
+if __name__ == '__main__':
+    unittest.main()
+
