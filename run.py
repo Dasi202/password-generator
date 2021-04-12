@@ -1,4 +1,7 @@
 #!/usr/bin/env python3.8
+from user import User
+from credential import Credential
+
 def create_user(fname, lname, uname, pwd):
     """
     Function creating a new user
