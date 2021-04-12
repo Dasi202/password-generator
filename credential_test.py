@@ -43,8 +43,13 @@ class TestCredential(unittest.TestCase):
         found_credential = Credential.find_by_title("Gmail")
         self.assertEqual(found_credential.title, test_credential.title)
 
-
-
+    def test_credential_exists(self):
+        self.new_credential.save_credential()
+        test_credential = Credential("Gmail", "https://gmail.com/signup/", "situwali", "google")
+        test_credential.save_credential()
+        credential_exists = Credential.credential_exist("Gmail")
+        self.assertTrue(credential_exists)
+        
 if __name__ == '__main__':
     unittest.main()
 
