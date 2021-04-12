@@ -37,4 +37,11 @@ class Credential:
     def display_credentials(cls):
         return cls.credential_list
 
-    
+    @classmethod
+    def generatePassword(cls, stringLength):
+        """
+        Generate a 8 character random password string of letters and digits and special characters
+        """
+        password = string.ascii_uppercase + \
+            string.ascii_lowercase + string.digits + "~!@#$%^&*"
+        return ''.join(random.choice(password) for i in range(stringLength))
