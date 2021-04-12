@@ -12,3 +12,6 @@ class Credential:
 
     def save_credential(self):
         Credential.credential_list.append(self)
+
+    def delete_credential(self):
+        Credential.credential_list.remove(self)
