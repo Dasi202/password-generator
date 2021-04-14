@@ -64,6 +64,13 @@ def find_credentials(title):
     '''
     return Credential.find_by_title(title)
 
+def generate_password(length):
+    return Credential.generatePassword(length)
+
+
+def verify_users(username, password):
+    return User.verify_user(username, password)
+
 def main():
         print("'Hello Welcome to password generator.\n Use one of these short codes to continue:\n su - Sign Up\n li - Log in")
         short_code = input().lower ()
@@ -99,7 +106,7 @@ def main():
             if verify_users == login:
                 print (f"Hello {username}.Welcome to password generator\n")
         while True:
-            print("Use these short codes:\n cc - Create a new credential\n dc - Display credential\n fc - Find credentials \n gp - Generate a random password d- Delete credentials \n ex - Exit the application \n")
+            print("Use these short codes:\n cc - Create a new credential\n dc - Display credential\n fc - Find credentials \n gp - Generate a random password \n d - Delete credentials \n ex - Exit the application \n")
             short_code == input().lower()
             if short_code == "cc":
                 print("Create credential")
@@ -107,7 +114,7 @@ def main():
                 print("Enter Title eg .. Gmail")
                 title = input().lower
                 print("Enter URL eg .. https://www.gmail.com/login")
-                url = input().lower().strip()
+                url = input().lower()
                 print("Enter username...")
                 user_name = input()
                 print(user_name)
@@ -126,7 +133,7 @@ def main():
                         print("Invalid choice Please try again")
                 save_credentials(create_credential(title, url, user_name, pwd))
                 print(f"credential for {title}: \n URL: {url} \n Username: {user_name}\n Password: {pwd}\n")
-            elif s_code == "dc":
+            elif short_code == "dc":
                 if display_credentials():
                     print("Displaying crredentials")
                     print("*="*15)
@@ -135,7 +142,7 @@ def main():
                         print("*="*15)
                 else:
                     print("Credential is yet to be saved..\n")
-            elif s_code == "fc":
+            elif short_code == "fc":
                 search_name = input("Enter account title to search for ").lower().strip()
                 if find_credentials(search_name):
                     search_credential = find_credentials(search_name)
@@ -144,7 +151,7 @@ def main():
                     print("*="*25)
                 else:
                     print("Credential does not exist\n")
-            elif s_code == "d":
+            elif short_code == "d":
                 search_name = input("Enter title of credential you want to delete")
                 if find_credentials(search_name):
                     print("*_"*25)
@@ -152,17 +159,17 @@ def main():
                 else:
                     print("Credential does not exist \n")
 
-            elif s_code == "gp":
+            elif short_code == "gp":
                 length = int(
                     input("please enter the lenght of the password you want generated..."))
                 int_length = int(length)
                 pwd = generate_password(int_length)
                 print(f"generated password: {pwd}")
-            elif s_code == "ex":
+            elif short_code == "ex":
                 print("Thanks for using Password Locker....")
                 break
             else:
-                print("Wrong entry... Check your entry again and let it match those in the menu")
+                print("Wrong entry... Please check your entry and let it match those in the menu")
         else:
             print("Please enter a valid input to continue")
 
