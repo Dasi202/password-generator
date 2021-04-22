@@ -62,6 +62,9 @@ class TestUser(unittest.TestCase):
         self.assertTrue(user_exists)
 
     def test_check_user(self):
+        """
+        Test case to check for the user
+        """
         self.new_user.save_user()
         test_user = User("Test", "user", "test", "walIas15")
         test_user.save_user()

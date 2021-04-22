@@ -9,16 +9,25 @@ class User:
     user_list = []
 
     def __init__(self, first_name, last_name, user_name, password):
+        """
+        Initialize method that helps us define properties for our objects
+        """
         self.first_name = first_name
         self. last_name = last_name
         self.user_name = user_name
         self.password = password
 
     def save_user(self):
+        """
+        Method that saves user
+        """
         User.user_list.append(self)
 
     @classmethod
     def user_exist(cls, username):
+        """
+        Method that checks if the user exists and returns a boolean
+        """
 
         for user in cls.user_list:
             if user.user_name == username:
@@ -28,6 +37,9 @@ class User:
 
     @classmethod
     def check_user(cls, username, password):
+        """
+        Method that searches for user
+        """
         current_user = ''
         for user in cls.user_list:
             if(user.user_name == username and user.password == password):
@@ -36,6 +48,9 @@ class User:
 
     @classmethod
     def verify_user(cls, username, password):
+        """
+        Method verifying the user
+        """
         auth_user = ""
         for user in cls.user_list:
             if(user.user_name == username and user.password == password):

@@ -15,19 +15,31 @@ class Credential:
         self.password = password
 
     def save_credential(self):
+        """
+        Method that saves the credential
+        """
         Credential.credential_list.append(self)
 
     def delete_credential(self):
+        """
+        Method that deletes credential
+        """
         Credential.credential_list.remove(self)
 
     @classmethod
     def find_by_title(cls, title):
+        """
+        Method finds credential via title
+        """
         for credential in cls.credential_list:
             if credential.title == title:
                 return credential
 
     @classmethod
     def credential_exist(cls, title):
+        """
+        Method checks if credential exists
+        """
         for credential in cls.credential_list:
             if credential.title == title:
                 return True
@@ -35,6 +47,9 @@ class Credential:
 
     @classmethod
     def display_credentials(cls):
+        """
+        Method dispalys the credentials
+        """
         return cls.credential_list
 
     @classmethod
